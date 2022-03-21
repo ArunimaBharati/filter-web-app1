@@ -1,6 +1,9 @@
+lipX=0;
+lipY=0;
+
 function preload()
 {
-
+clown_nose=loadImage("https://i.postimg.cc/y88v9BzW/5006041-clown-nose-png-101-images-in-collection-page-2-clown-nose-png-640-480-preview.png");
 }
 
 function setup()
@@ -18,6 +21,7 @@ function setup()
 function draw()
 {
 image(video,  0, 0, 400, 400);
+image(clown_nose, lipX, lipY, 30, 30);
 }
 
 function take_snapshot()
@@ -34,8 +38,10 @@ function gotPoses(results)
 {
     if (results.length>0){
         console.log(results);
-        console.log("nose x="+results[0].pose.nose.x);
-        console.log("nose y="+results[0].pose.nose.y);
+        lipX=results[0].pose.lip.x;
+        lipY=results[0].pose.lip.y;
+        console.log("lips x="+lipX);
+        console.log("lips y="+lipY);
         
     }
 }
